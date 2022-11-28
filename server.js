@@ -1,5 +1,6 @@
 const express = require("express");
 const bp = require('body-parser')
+const cors = require('cors')
 
 const groups = {}
 
@@ -7,6 +8,7 @@ const app = express(); app.listen(4000, () => {
     console.log("Server running on port 4000");
 });
 
+app.use(cors())
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
@@ -46,3 +48,6 @@ app.post("/createGroup/:groupid", (req, res) => {
     groups[groupId] = req.body
     res.end('Group created');
 });
+
+
+module.exports = app

@@ -1,10 +1,12 @@
-const express = require("express");
+const express = require("express")
+const https = require('https')
 const bp = require('body-parser')
 const cors = require('cors')
 
 const groups = {}
 
-const app = express(); app.listen(4000, () => {
+const app = express();
+https.createServer(app).listen(4000, () => {
     console.log("Server running on port 4000");
 });
 

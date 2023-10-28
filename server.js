@@ -6,7 +6,10 @@ const cors = require('cors')
 const groups = {}
 
 const app = express();
-https.createServer(app).listen(4000, () => {
+https.createServer({
+    key: fs.readFileSync("key.pem"),
+    cert: fs.readFileSync("cert.pem"),
+}, app).listen(4000, () => {
     console.log("Server running on port 4000");
 });
 
